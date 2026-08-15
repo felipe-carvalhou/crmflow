@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[x-cloak] {
+    display: none !important;
+}
+
+@layer base {
+    body {
+        @apply bg-canvas text-slate-800;
+    }
+}
+
+@layer components {
+    /* Cartão padrão do app: base de tudo (stat tiles, colunas, painel lateral) */
+    .app-card {
+        @apply bg-white rounded-2xl border border-slate-200/70 shadow-soft;
+    }
+
+    /* Links de navegação da sidebar */
+    .nav-link {
+        @apply flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-slate-500 transition hover:bg-slate-100 hover:text-slate-900;
+    }
+
+    .nav-link-active {
+        @apply bg-slate-900 text-white hover:bg-slate-900 hover:text-white;
+    }
+
+    /* Botão de ação primária (equivalente ao "Create task" da referência) */
+    .btn-primary {
+        @apply inline-flex items-center justify-center gap-1.5 rounded-lg bg-slate-900 px-3.5 py-2 text-sm font-semibold text-white shadow-soft transition hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-50;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-sm font-semibold text-slate-600 shadow-soft transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50;
+    }
+
+    .btn-danger {
+        @apply inline-flex items-center justify-center gap-1.5 rounded-lg bg-rose-600 px-3.5 py-2 text-sm font-semibold text-white shadow-soft transition hover:bg-rose-500 disabled:cursor-not-allowed disabled:opacity-50;
+    }
+
+    .field-input {
+        @apply w-full rounded-lg border-slate-200 bg-white text-sm text-slate-800 shadow-soft transition placeholder:text-slate-400 focus:border-violet-400 focus:ring-violet-400;
+    }
+
+    .field-label {
+        @apply block text-xs font-semibold uppercase tracking-wide text-slate-400;
+    }
+}
+
+@layer utilities {
+    /* Scrollbar discreta, usada nas colunas do kanban e na sidebar */
+    .scrollbar-thin {
+        scrollbar-width: thin;
+        scrollbar-color: theme('colors.slate.300') transparent;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar-thumb {
+        background-color: theme('colors.slate.300');
+        border-radius: 9999px;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar-track {
+        background: transparent;
+    }
+}

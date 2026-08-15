@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Autoflow — Automação de WhatsApp para pequenos negócios</title>
+<meta name="description" content="Atendimento automático no WhatsApp, agendamento, confirmação de pedido e postagem automática de preços em grupos. Instalação em 48h, sem fidelidade, garantia de 14 dias.">
+<meta property="og:title" content="Autoflow — Seu negócio vendendo no automático, 24h por dia">
+<meta property="og:description" content="Automação de WhatsApp para salões, barbearias, delivery e churrascarias. Instalação em 48h.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- ═══════════ ANALYTICS: descomente e preencha antes de rodar tráfego ═══════════
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'SEU_PIXEL_ID'); fbq('track', 'PageView');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date()); gtag('config', 'G-XXXXXXXXXX');
+</script>
+════════════════════════════════════════════════════════════════════════════════ -->
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Plus Jakarta Sans', -apple-system, sans-serif; background:#EFEEF4; color:#111014; -webkit-font-smoothing:antialiased; }
+a { text-decoration:none; color:inherit; }
+.mono { font-family:'DM Mono', monospace; }
+.wrap { max-width:1240px; margin:0 auto; display:flex; flex-direction:column; gap:20px; }
+.btn-dark { display:inline-flex; align-items:center; gap:12px; background:#111014; color:#FFF; border-radius:100px; padding:14px 16px 14px 26px; font-size:15.5px; font-weight:600; white-space:nowrap; transition:background .2s; border:none; cursor:pointer; font-family:inherit; }
+.btn-dark:hover { background:#6B4CE6; }
+.btn-circle { width:32px; height:32px; border-radius:50%; background:#DDF24A; color:#111014; display:flex; align-items:center; justify-content:center; font-size:14px; flex-shrink:0; }
+.card-white { background:#FFF; border-radius:32px; padding:clamp(26px,3.6vw,44px); }
+h1,h2,h3 { letter-spacing:-0.03em; font-weight:800; }
+input[type=range] { width:100%; margin-top:10px; accent-color:#6B4CE6; }
+@media (max-width:640px){ .hide-mobile { display:none !important; } }
+</style>
+</head>
+<body>
+<div style="padding:20px; min-height:100vh;">
+<div class="wrap">
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav style="display:flex; align-items:center; justify-content:space-between; gap:24px; background:#FFF; border-radius:28px; padding:14px 16px 14px 26px;">
+  <div style="display:flex; align-items:center; gap:10px;">
+    <div style="width:30px; height:30px; border-radius:9px; background:#111014; display:flex; align-items:center; justify-content:center; color:#DDF24A; font-size:15px; font-weight:800;">A</div>
+    <span style="font-size:17px; font-weight:700; letter-spacing:-0.02em;">Autoflow</span>
+  </div>
+  <div class="hide-mobile" style="display:flex; align-items:center; flex-wrap:wrap; gap:12px 28px; font-size:14.5px; font-weight:500; color:#4A4757;">
+    <a href="#nichos">Para quem é</a>
+    <a href="#automacoes">Automações</a>
+    <a href="#como">Como funciona</a>
+    <a href="#planos">Planos</a>
+  </div>
+  <a class="btn-dark wa-link" href="#" target="_blank" rel="noopener" style="padding:11px 12px 11px 22px; font-size:14.5px;">
+    Falar no WhatsApp <span class="btn-circle" style="width:30px;height:30px;">↗</span>
+  </a>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,480px),1fr)); gap:20px;">
+  <div class="card-white" style="padding:clamp(28px,4vw,52px) clamp(24px,4vw,52px) clamp(28px,3.5vw,44px);">
+    <div class="mono" style="display:inline-flex; align-items:center; gap:8px; background:#F2EFFE; color:#5B3FD1; border-radius:100px; padding:7px 14px; font-size:12px;">
+      <span style="width:7px; height:7px; border-radius:50%; background:#6B4CE6;"></span>
+      FEITO PARA PEQUENOS NEGÓCIOS DO BRASIL
+    </div>
+    <h1 style="margin:26px 0 0; font-size:clamp(32px,4vw,60px); line-height:1.18; text-wrap:balance;">
+      Seu negócio vendendo<br>no automático, <span style="background:#DDF24A; border-radius:14px; padding:0.06em 0.2em; box-decoration-break:clone; -webkit-box-decoration-break:clone;">24h por dia</span>
+    </h1>
+    <p style="margin:24px 0 0; max-width:620px; font-size:18px; line-height:1.55; color:#55525F;">
+      Atendimento no WhatsApp, agendamento, confirmação de pedido e postagens automáticas de preços nos grupos. Tudo funcionando sozinho, enquanto você cuida do que importa: atender bem e faturar mais.
+    </p>
+    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:34px;">
+      <a class="btn-dark wa-link" href="#" target="_blank" rel="noopener" style="font-size:16px; padding:15px 16px 15px 28px;">
+        Quero automatizar meu negócio <span class="btn-circle" style="width:34px;height:34px;">↗</span>
+      </a>
+      <a href="#planos" style="border:1px solid #DFDCE9; border-radius:100px; padding:16px 26px; font-size:16px; font-weight:600;">Ver planos e preços</a>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:14px 26px; margin-top:34px; padding-top:26px; border-top:1px solid #ECEAF3;">
+      <span style="font-size:14px; color:#3C3948; font-weight:600;">Automação que já roda em churrascaria, delivery e distribuidora</span>
+      <span style="font-size:14px; color:#6C6979;">Resposta em até 5 min no horário comercial</span>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap:22px; margin-top:18px; font-size:14px; color:#6C6979;">
+      <span>✓ Sem fidelidade</span>
+      <span>✓ Instalação em até 48h</span>
+      <span>✓ Garantia de 14 dias</span>
+    </div>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:20px;">
+    <div style="background:#C9B8FA; border-radius:32px; padding:32px;">
+      <h3 style="font-size:26px; font-weight:700; color:#1B1233;">Postagem automática de preços</h3>
+      <p style="margin:12px 0 0; font-size:15px; line-height:1.5; color:#382A5C;">
+        Seu cardápio, tabela ou promoção do dia publicados sozinhos em dezenas de grupos de WhatsApp, no horário que mais vende.
+      </p>
+      <div style="margin-top:22px; background:#FFF; border-radius:16px; padding:14px 14px 14px 18px; display:flex; align-items:center; justify-content:space-between; gap:12px;">
+        <span class="mono" style="font-size:13px; color:#4A4757;">Exemplo: hoje, 11:30 · 38 grupos</span>
+        <span style="width:32px; height:32px; border-radius:50%; background:#111014; color:#FFF; display:flex; align-items:center; justify-content:center; font-size:13px;">↗</span>
+      </div>
+    </div>
+    <div style="background:#111014; border-radius:32px; padding:32px; color:#FFF; flex:1; display:flex; flex-direction:column; justify-content:space-between; gap:26px;">
+      <div>
+        <div class="mono" style="font-size:12px; color:#8C8A99; letter-spacing:0.04em;">CASO REAL · CHURRASCARIA</div>
+        <div style="margin-top:16px; font-size:38px; font-weight:800; letter-spacing:-0.03em; line-height:1.15;">Tabela atualizada 1 vez.<br>Publicada em 40 grupos.</div>
+        <div style="margin-top:10px; font-size:15px; color:#B9B7C4;">Pedido do cliente cai direto na impressora da cozinha, sem ninguém copiar e colar.</div>
+      </div>
+      <div style="display:flex; align-items:flex-end; gap:8px; height:78px;" aria-hidden="true">
+        <div style="flex:1; height:38%; background:#2A2933; border-radius:8px;"></div>
+        <div style="flex:1; height:52%; background:#2A2933; border-radius:8px;"></div>
+        <div style="flex:1; height:44%; background:#2A2933; border-radius:8px;"></div>
+        <div style="flex:1; height:70%; background:#C9B8FA; border-radius:8px;"></div>
+        <div style="flex:1; height:100%; background:#DDF24A; border-radius:8px;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CALCULADORA + FORM ═══════════ -->
+<section id="calculadora" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,360px),1fr)); gap:20px;">
+  <div class="card-white">
+    <span class="mono" style="font-size:12px; color:#8C8A99;">CALCULADORA DE PERDA</span>
+    <h2 style="margin:14px 0 0; font-size:clamp(26px,3.4vw,36px); line-height:1.08;">Quanto você perde por não responder a tempo?</h2>
+    <div style="display:flex; flex-direction:column; gap:22px; margin-top:28px;">
+      <div>
+        <div style="display:flex; justify-content:space-between; font-size:14.5px; color:#4A4757; font-weight:600;">
+          <span>Clientes perdidos por semana</span><span id="out-perdidos">12</span>
+        </div>
+        <input type="range" id="in-perdidos" min="1" max="60" value="12" aria-label="Clientes perdidos por semana">
+      </div>
+      <div>
+        <div style="display:flex; justify-content:space-between; font-size:14.5px; color:#4A4757; font-weight:600;">
+          <span>Ticket médio</span><span id="out-ticket">R$ 90</span>
+        </div>
+        <input type="range" id="in-ticket" min="20" max="600" step="10" value="90" aria-label="Ticket médio em reais">
+      </div>
+    </div>
+    <div style="margin-top:28px; background:#111014; border-radius:24px; padding:26px; color:#FFF;">
+      <div style="font-size:13.5px; color:#B9B7C4;">Você deixa de faturar por mês</div>
+      <div id="out-perda" style="font-size:clamp(34px,4vw,46px); font-weight:800; letter-spacing:-0.04em; margin-top:6px;">R$ 4.320</div>
+      <div style="font-size:14px; color:#B9B7C4; margin-top:8px;">Recuperando só metade disso, a automação se paga na primeira semana.</div>
+    </div>
+  </div>
+
+  <div id="orcamento" style="background:#C9B8FA; border-radius:32px; padding:clamp(26px,3.6vw,44px); display:flex; flex-direction:column;">
+    <h2 style="font-size:clamp(26px,3.4vw,34px); color:#1B1233; line-height:1.08;">Receba um plano de automação para o seu negócio</h2>
+    <p style="margin:12px 0 0; font-size:15.5px; line-height:1.5; color:#382A5C;">Gratuito, sem compromisso. Levo 15 minutos e já mostro o que dá para automatizar hoje.</p>
+    <div style="display:flex; flex-direction:column; gap:10px; margin-top:24px;">
+      <input id="f-nome" placeholder="Seu nome" style="border:none; border-radius:16px; padding:16px 18px; font-family:inherit; font-size:15px; background:#FFF;">
+      <input id="f-fone" placeholder="WhatsApp com DDD" inputmode="tel" style="border:none; border-radius:16px; padding:16px 18px; font-family:inherit; font-size:15px; background:#FFF;">
+      <select id="f-seg" style="border:none; border-radius:16px; padding:16px 18px; font-family:inherit; font-size:15px; background:#FFF; color:#111014;">
+        <option>Salão de beleza</option>
+        <option>Barbearia</option>
+        <option>Restaurante ou delivery</option>
+        <option>Churrascaria</option>
+        <option>Bar ou petiscaria</option>
+        <option>Entregas e fretes</option>
+        <option>Outro</option>
+      </select>
+      <button id="f-enviar" class="btn-dark" style="margin-top:6px; justify-content:center; padding:17px; font-size:16px;">Quero meu plano gratuito</button>
+    </div>
+    <div style="margin-top:16px; font-size:13px; color:#463867;">Seus dados ficam só comigo. Sem spam, sem ligação insistente.</div>
+  </div>
+</section>
+
+<!-- ═══════════ NICHOS ═══════════ -->
+<section id="nichos" class="card-white">
+  <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+    <div>
+      <h2 style="font-size:clamp(26px,3.4vw,38px);">Automações prontas para o seu ramo</h2>
+      <p style="margin:12px 0 0; font-size:16.5px; color:#55525F; max-width:640px;">Cada negócio recebe um fluxo já configurado, com as mensagens e horários que funcionam no seu tipo de cliente.</p>
+    </div>
+    <span class="mono" style="font-size:12px; color:#8C8A99;">06 SEGMENTOS</span>
+  </div>
+  <div id="grid-nichos" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,260px),1fr)); gap:14px; margin-top:34px;"></div>
+</section>
+
+<!-- ═══════════ CARRO-CHEFE + FEATURES ═══════════ -->
+<section id="automacoes" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,340px),1fr)); gap:20px;">
+  <div style="background:#DDF24A; border-radius:32px; padding:clamp(26px,3.6vw,44px);">
+    <span class="mono" style="font-size:12px; color:#4C5410;">O CARRO-CHEFE</span>
+    <h2 style="margin:16px 0 0; font-size:clamp(26px,3.4vw,40px); line-height:1.05; color:#1A1D05;">Preço novo? Todo mundo já sabe.</h2>
+    <p style="margin:16px 0 0; font-size:16.5px; line-height:1.55; color:#3B3F14;">
+      Você atualiza a tabela uma vez. O robô publica em todos os grupos, salva o histórico e avisa quem não viu. Sem copiar, colar e esquecer.
+    </p>
+    <div id="post-bullets" style="display:flex; flex-direction:column; gap:10px; margin-top:28px;"></div>
+  </div>
+  <div class="card-white" style="display:flex; flex-direction:column;">
+    <h2 style="font-size:clamp(25px,3.2vw,34px);">O que mais entra no pacote</h2>
+    <div id="grid-features" style="display:flex; flex-direction:column; margin-top:26px;"></div>
+  </div>
+</section>
+
+<!-- ═══════════ COMO FUNCIONA ═══════════ -->
+<section id="como" class="card-white">
+  <h2 style="font-size:clamp(26px,3.4vw,38px);">Como funciona</h2>
+  <div style="display:flex; flex-wrap:wrap; align-items:center; gap:14px; margin-top:20px;">
+    <a href="#orcamento" class="btn-dark" style="font-size:15px; padding:14px 15px 14px 24px;">
+      Agendar minha conversa <span class="btn-circle" style="width:30px;height:30px;">↗</span>
+    </a>
+    <span style="font-size:14px; color:#6C6979;">Atendo no máximo 5 instalações por mês, para acompanhar cada uma de perto.</span>
+  </div>
+  <div id="grid-steps" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,260px),1fr)); gap:16px; margin-top:26px;"></div>
+</section>
+
+<!-- ═══════════ GARANTIA ═══════════ -->
+<section style="background:#DDF24A; border-radius:32px; padding:clamp(26px,3.4vw,40px); display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+  <div style="max-width:640px;">
+    <h3 style="font-size:clamp(23px,2.8vw,30px); color:#1A1D05;">Garantia de 14 dias. Sem fidelidade.</h3>
+    <p style="margin:10px 0 0; font-size:16px; line-height:1.5; color:#3B3F14;">Se em duas semanas a automação não te economizar tempo ou trouxer pedido, devolvo o valor da instalação e desligo tudo. Só isso.</p>
+  </div>
+  <a href="#orcamento" class="btn-dark" style="font-size:15.5px;">
+    Começar sem risco <span class="btn-circle">↗</span>
+  </a>
+</section>
+
+<!-- ═══════════ PLANOS ═══════════ -->
+<section id="planos" class="card-white">
+  <div style="display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+    <div>
+      <h2 style="font-size:clamp(26px,3.4vw,38px);">Planos</h2>
+      <p style="margin:10px 0 0; font-size:16px; color:#55525F;">Instalação, treinamento da equipe e suporte inclusos.</p>
+    </div>
+    <div style="display:flex; align-items:center; gap:6px; background:#F2F1F7; border-radius:100px; padding:5px;">
+      <button id="tab-mensal" class="plan-tab" style="border:none; cursor:pointer; font-family:inherit; font-size:14px; font-weight:600; border-radius:100px; padding:10px 18px;">Mensal</button>
+      <button id="tab-anual" class="plan-tab" style="border:none; cursor:pointer; font-family:inherit; font-size:14px; font-weight:600; border-radius:100px; padding:10px 18px;">Anual · 2 meses grátis</button>
+    </div>
+  </div>
+  <div id="grid-plans" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,260px),1fr)); gap:16px; margin-top:32px;"></div>
+</section>
+
+<!-- ═══════════ CASOS REAIS ═══════════ -->
+<section style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,280px),1fr)); gap:20px;" id="grid-cases"></section>
+
+<!-- ═══════════ FAQ ═══════════ -->
+<section style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%,340px),1fr)); gap:20px;">
+  <div style="background:#111014; border-radius:32px; padding:clamp(26px,3.6vw,44px); color:#FFF;">
+    <h2 style="font-size:clamp(26px,3.4vw,36px); line-height:1.05;">Dúvidas frequentes</h2>
+    <p style="margin:16px 0 0; font-size:16px; line-height:1.55; color:#B9B7C4;">Não achou a sua? Manda mensagem, respondo em minutos no horário comercial.</p>
+    <a class="wa-link" href="#" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:12px; margin-top:26px; background:#DDF24A; color:#111014; border-radius:100px; padding:13px 14px 13px 24px; font-size:15px; font-weight:600;">
+      Tirar dúvida agora
+      <span style="width:30px; height:30px; border-radius:50%; background:#111014; color:#DDF24A; display:flex; align-items:center; justify-content:center; font-size:13px;">↗</span>
+    </a>
+  </div>
+  <div style="background:#FFF; border-radius:32px; padding:20px;" id="grid-faq"></div>
+</section>
+
+<!-- ═══════════ CTA FINAL ═══════════ -->
+<section style="background:#C9B8FA; border-radius:32px; padding:clamp(34px,4vw,56px) clamp(24px,3.6vw,44px); display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap;">
+  <div>
+    <h2 style="font-size:clamp(28px,3.8vw,44px); line-height:1.05; color:#1B1233;">Comece essa semana.<br>A concorrência não avisa.</h2>
+    <p style="margin:14px 0 0; font-size:17px; color:#382A5C;">Diagnóstico gratuito de 15 minutos no WhatsApp.</p>
+  </div>
+  <a class="btn-dark wa-link" href="#" target="_blank" rel="noopener" style="font-size:17px; padding:18px 18px 18px 32px;">
+    Quero meu diagnóstico <span class="btn-circle" style="width:38px;height:38px;">↗</span>
+  </a>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer style="display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; padding:14px 8px 30px; font-size:13.5px; color:#7A7787;">
+  <span>© 2026 Autoflow Automações · CNPJ <span style="background:#FFF3C4; padding:1px 6px; border-radius:4px;">PREENCHER-CNPJ</span></span>
+  <span class="mono">contato@autoflow.com.br</span>
+</footer>
+
+</div>
+
+<!-- Botão flutuante WhatsApp -->
+<a class="wa-link" href="#" target="_blank" rel="noopener" aria-label="Falar agora no WhatsApp"
+   style="position:fixed; right:20px; bottom:20px; z-index:50; display:flex; align-items:center; gap:12px; background:#111014; color:#FFF; border-radius:100px; padding:14px 16px 14px 22px; font-size:15px; font-weight:600; box-shadow:0 12px 30px rgba(17,16,20,0.28); white-space:nowrap;">
+  Falar agora no WhatsApp
+  <span class="btn-circle" style="width:30px;height:30px;">↗</span>
+</a>
+</div>
+
+<script>
+/* ═══════════════ CONFIGURAÇÃO — EDITE AQUI ═══════════════ */
+const CONFIG = {
+  whatsapp: "5521990570119", // SEU número com código do país
+  mensagemPadrao: "Olá! Quero automatizar meu negócio.",
+  crmApiUrl: "http://localhost/api/leads", // troca pro domínio real quando for pra produção
+};
+/* ═════════════════════════════════════════════════════════ */
+
+const waUrl = (msg) => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg || CONFIG.mensagemPadrao)}`;
+document.querySelectorAll('.wa-link').forEach(a => a.href = waUrl());
+
+/* ---------- Calculadora de perda ---------- */
+const brl = v => "R$ " + v.toLocaleString("pt-BR", { maximumFractionDigits: 0 });
+const inPerdidos = document.getElementById('in-perdidos');
+const inTicket   = document.getElementById('in-ticket');
+function calcPerda() {
+  const p = +inPerdidos.value, t = +inTicket.value;
+  document.getElementById('out-perdidos').textContent = p;
+  document.getElementById('out-ticket').textContent = brl(t);
+  document.getElementById('out-perda').textContent = brl(p * t * 4);
+}
+inPerdidos.addEventListener('input', calcPerda);
+inTicket.addEventListener('input', calcPerda);
+calcPerda();
+
+/* ---------- Form → salva no CRM, depois abre WhatsApp ---------- */
+function formatarTelefoneBR(valor) {
+  const d = valor.replace(/\D/g, '').slice(0, 11);
+  if (d.length <= 2) return d;
+  if (d.length <= 7) return `(${d.slice(0,2)}) ${d.slice(2)}`;
+  return `(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7)}`;
+}
+
+document.getElementById('f-enviar').addEventListener('click', async () => {
+  const btn = document.getElementById('f-enviar');
+  const nome = document.getElementById('f-nome').value.trim();
+  const foneRaw = document.getElementById('f-fone').value.trim();
+  const fone = formatarTelefoneBR(foneRaw);
+  const seg  = document.getElementById('f-seg').value;
+
+  if (!nome || !fone) {
+    alert('Preenche nome e WhatsApp antes de enviar.');
+    return;
+  }
+
+  // IMPORTANTE: abre a janela do WhatsApp AGORA, de forma síncrona,
+  // ainda dentro do clique do usuário — senão o navegador bloqueia o
+  // popup depois do await abaixo. Só trocamos a URL dela mais tarde.
+  const waWindow = window.open('', '_blank');
+
+  const textoOriginal = btn.textContent;
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+
+  // Tenta salvar no CRM. Se falhar por qualquer motivo (API fora do ar,
+  // CORS, timeout, sem internet, validação), NÃO trava o fluxo — segue
+  // pro WhatsApp mesmo assim. Prefiro perder o registro automático a
+  // perder o lead.
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 5000); // 5s de timeout
+
+    const res = await fetch(CONFIG.crmApiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nome: nome,
+        telefone: fone,
+        segmento: seg,
+        origem: 'landing-autoflow',
+      }),
+      signal: controller.signal,
+    });
+
+    clearTimeout(timeout);
+
+    if (!res.ok) {
+      console.warn('CRM retornou erro:', res.status, await res.text().catch(() => ''));
+    }
+  } catch (err) {
+    console.warn('Não consegui salvar no CRM, mas o lead vai pro WhatsApp normalmente:', err.message);
+  } finally {
+    btn.textContent = textoOriginal;
+    btn.disabled = false;
+  }
+
+  const destino = waUrl(`Olá! Meu nome é ${nome}, tenho um negócio de ${seg}. Meu WhatsApp é ${fone}. Quero meu plano de automação gratuito.`);
+  if (waWindow) {
+    waWindow.location.href = destino;
+  } else {
+    // Se mesmo a janela em branco foi bloqueada (raro), tenta de novo
+    window.open(destino, '_blank');
+  }
+
+  // Limpa o formulário depois do envio, pra ficar claro que já foi enviado
+  document.getElementById('f-nome').value = '';
+  document.getElementById('f-fone').value = '';
+  document.getElementById('f-seg').selectedIndex = 0;
+});
+
+/* ---------- Nichos ---------- */
+const niches = [
+  { code:"01", tag:"BELEZA",    title:"Salão de beleza",        text:"Agenda cheia sem ficar no celular: cliente escolhe horário, recebe lembrete e confirma sozinho." },
+  { code:"02", tag:"BARBEARIA", title:"Barbearia",              text:"Fila organizada, aviso de encaixe e retorno automático de quem não aparece há 30 dias." },
+  { code:"03", tag:"DELIVERY",  title:"Restaurante e delivery", text:"Cardápio, pedido e status da entrega respondidos na hora, inclusive no pico do almoço." },
+  { code:"04", tag:"CARNES",    title:"Churrascaria",           text:"Reserva de mesa, rodízio do dia e disparo de promoção para quem já comeu aí." },
+  { code:"05", tag:"BAR",       title:"Bar e petiscaria",       text:"Divulgação de show, happy hour e cardápio da noite postados nos grupos no horário certo." },
+  { code:"06", tag:"LOGÍSTICA", title:"Entregas e fretes",      text:"Orçamento por distância, aceite do motorista e aviso automático de coleta e entrega." },
+];
+document.getElementById('grid-nichos').innerHTML = niches.map(n => `
+  <div style="background:#F6F5FA; border-radius:22px; padding:26px; display:flex; flex-direction:column; gap:12px; min-height:210px;">
+    <div style="display:flex; align-items:center; justify-content:space-between;">
+      <span class="mono" style="width:38px; height:38px; border-radius:12px; background:#111014; color:#DDF24A; display:flex; align-items:center; justify-content:center; font-size:13px;">${n.code}</span>
+      <span class="mono" style="font-size:11px; color:#9995A8;">${n.tag}</span>
+    </div>
+    <div style="font-size:20px; font-weight:700; letter-spacing:-0.02em; margin-top:4px;">${n.title}</div>
+    <div style="font-size:14.5px; line-height:1.5; color:#5B5866;">${n.text}</div>
+  </div>`).join('');
+
+/* ---------- Bullets do carro-chefe ---------- */
+const bullets = [
+  "Você manda a tabela nova uma única vez",
+  "O robô agenda o melhor horário de cada grupo",
+  "Publica com foto, texto e link de pedido",
+  "Registra tudo e reenvia para quem não viu",
+];
+document.getElementById('post-bullets').innerHTML = bullets.map((t,i) => `
+  <div style="background:#111014; color:#FFF; border-radius:16px; padding:16px 20px; font-size:15px; display:flex; align-items:center; gap:14px;">
+    <span style="width:22px; height:22px; border-radius:50%; background:#DDF24A; color:#111014; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0;">${i+1}</span>
+    ${t}
+  </div>`).join('');
+
+/* ---------- Features ---------- */
+const features = [
+  { title:"Atendimento 24h no WhatsApp",  text:"Responde dúvida, envia cardápio e fecha pedido mesmo de madrugada." },
+  { title:"Agendamento com lembrete",     text:"Confirma o horário no dia anterior e reduz o cliente que some." },
+  { title:"Recuperação de clientes",      text:"Identifica quem não compra há semanas e manda uma oferta certeira." },
+  { title:"Cobrança e Pix automáticos",   text:"Envia o link de pagamento e avisa você quando cai." },
+  { title:"Painel simples",               text:"Veja conversas, pedidos e postagens do mês em uma tela só." },
+  { title:"Treinamento da equipe",        text:"Uma hora de treino ao vivo para todo mundo usar sem medo." },
+];
+document.getElementById('grid-features').innerHTML = features.map(f => `
+  <div style="display:flex; align-items:flex-start; gap:16px; padding:18px 0; border-bottom:1px solid #EFEDF5;">
+    <span style="width:9px; height:9px; border-radius:50%; background:#6B4CE6; margin-top:7px; flex-shrink:0;"></span>
+    <div>
+      <div style="font-size:16.5px; font-weight:600;">${f.title}</div>
+      <div style="font-size:14.5px; line-height:1.5; color:#5B5866; margin-top:4px;">${f.text}</div>
+    </div>
+  </div>`).join('');
+
+/* ---------- Passos ---------- */
+const steps = [
+  { n:"1", title:"Conversa de 15 min", text:"Entendo seu ramo, seu volume de clientes e onde você perde tempo hoje." },
+  { n:"2", title:"Monto e instalo",    text:"Configuro os fluxos no seu número e nos seus grupos em até 48 horas." },
+  { n:"3", title:"Você acompanha",     text:"Ajusto o que for preciso na primeira semana e sigo dando suporte." },
+];
+document.getElementById('grid-steps').innerHTML = steps.map(s => `
+  <div style="background:#F6F5FA; border-radius:24px; padding:28px; display:flex; flex-direction:column; gap:10px;">
+    <span class="mono" style="width:34px; height:34px; border-radius:50%; border:1px solid #D6D2E4; display:flex; align-items:center; justify-content:center; font-size:13px; color:#4A4757;">${s.n}</span>
+    <div style="font-size:21px; font-weight:700; letter-spacing:-0.02em; margin-top:8px;">${s.title}</div>
+    <div style="font-size:15px; line-height:1.5; color:#5B5866;">${s.text}</div>
+  </div>`).join('');
+
+/* ---------- Planos ---------- */
+const plansRaw = [
+  { name:"Essencial", badge:"", price:[297,247], setup:"Instalação R$ 490 (uma vez)", dark:false,
+    items:["Atendimento automático no WhatsApp","Respostas de horário, endereço e cardápio","Captura de contatos em lista","Suporte por WhatsApp"] },
+  { name:"Crescimento", badge:"MAIS VENDIDO", price:[597,497], setup:"Instalação R$ 490 (uma vez)", dark:true,
+    items:["Tudo do Essencial","Postagem automática de preços em até 40 grupos","Agendamento ou pedido pelo robô","Lembrete e confirmação automáticos","Relatório semanal de conversas"] },
+  { name:"Operação total", badge:"", price:[997,830], setup:"Instalação sob medida", dark:false,
+    items:["Tudo do Crescimento","Grupos ilimitados e múltiplas unidades","Integração com entregas e fretes","Recuperação de cliente inativo","Ajustes mensais com a nossa equipe"] },
+];
+let anual = false;
+function renderPlans() {
+  document.getElementById('grid-plans').innerHTML = plansRaw.map(p => `
+    <div style="border-radius:26px; padding:30px; display:flex; flex-direction:column; min-height:430px; background:${p.dark ? "#111014" : "#F6F5FA"}; color:${p.dark ? "#FFF" : "#111014"};">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
+        <span style="font-size:15px; font-weight:600;">${p.name}</span>
+        ${p.badge ? `<span class="mono" style="font-size:10.5px; letter-spacing:0.06em; background:#DDF24A; color:#111014; border-radius:100px; padding:5px 10px; white-space:nowrap;">${p.badge}</span>` : ""}
+      </div>
+      <div style="margin-top:22px; display:flex; align-items:flex-end; gap:6px;">
+        <span style="font-size:44px; font-weight:800; letter-spacing:-0.04em; line-height:1;">R$ ${anual ? p.price[1] : p.price[0]}</span>
+        <span style="font-size:14px; opacity:0.65; padding-bottom:6px;">/mês</span>
+      </div>
+      <div style="font-size:14px; opacity:0.7; margin-top:8px;">${p.setup}</div>
+      <div style="display:flex; flex-direction:column; gap:10px; margin-top:24px; flex:1;">
+        ${p.items.map(it => `<div style="font-size:14.5px; line-height:1.45; display:flex; gap:10px;"><span style="opacity:0.55;">—</span>${it}</div>`).join('')}
+      </div>
+      <a href="${waUrl('Olá! Tenho interesse no plano ' + p.name + '.')}" target="_blank" rel="noopener"
+         style="margin-top:24px; text-align:center; border-radius:100px; padding:14px; font-size:15px; font-weight:600; background:${p.dark ? "#DDF24A" : "#111014"}; color:${p.dark ? "#111014" : "#FFF"};">Contratar</a>
+    </div>`).join('');
+
+  const on  = "background:#111014; color:#FFF;";
+  const off = "background:transparent; color:#5B5866;";
+  document.getElementById('tab-mensal').style.cssText += anual ? off : on;
+  document.getElementById('tab-anual').style.cssText  += anual ? on : off;
+}
+document.getElementById('tab-mensal').addEventListener('click', () => { anual = false; renderPlans(); });
+document.getElementById('tab-anual').addEventListener('click',  () => { anual = true;  renderPlans(); });
+renderPlans();
+
+/* ---------- Casos reais ----------
+   Projetos de verdade, descritos por tipo de negócio.
+   Quando tiver depoimento assinado do cliente, troque o texto
+   e adicione nome + estabelecimento com autorização. */
+const cases = [
+  { tag:"CHURRASCARIA · RJ", quote:"Bot de pedidos no WhatsApp integrado à impressora térmica da cozinha: o cliente pede no grupo, a comanda sai impressa sozinha. Tabela de preços atualizada em 40 grupos com um clique.", },
+  { tag:"DELIVERY DE CALDOS · RJ", quote:"Operação multi-unidade com resumo financeiro diário automático no WhatsApp do dono: vendas por unidade, produto mais vendido e caixa do dia, sem planilha manual.", },
+  { tag:"O PRÓXIMO PODE SER O SEU", quote:"Seu negócio tem outra rotina que come tempo? Na conversa de diagnóstico eu mapeio o que dá pra automatizar primeiro — e você decide se faz sentido.", },
+];
+document.getElementById('grid-cases').innerHTML = cases.map(c => `
+  <div style="background:#FFF; border-radius:28px; padding:32px; display:flex; flex-direction:column; gap:20px;">
+    <span class="mono" style="font-size:11px; letter-spacing:0.05em; color:#8C8A99;">${c.tag}</span>
+    <p style="font-size:16.5px; line-height:1.55; color:#1F1D28;">${c.quote}</p>
+  </div>`).join('');
+
+/* ---------- FAQ ---------- */
+const faqs = [
+  { q:"Preciso trocar meu número de WhatsApp?", a:"Não. Trabalhamos com o número que seus clientes já conhecem, seja comum ou Business." },
+  { q:"Postar nos grupos é seguro?", a:"Sim. Usamos intervalos e limites diários para simular comportamento humano e evitar bloqueios." },
+  { q:"Funciona se eu não entendo de tecnologia?", a:"Funciona. Eu instalo, configuro e treino sua equipe. Você só aprova o conteúdo que vai ao ar." },
+  { q:"Tem fidelidade?", a:"Não. O plano é mensal e pode ser cancelado quando quiser, com aviso de 30 dias." },
+  { q:"Em quanto tempo fica pronto?", a:"Em geral 48 horas após a conversa inicial e o envio dos seus materiais." },
+];
+let openFaq = 0;
+function renderFaq() {
+  document.getElementById('grid-faq').innerHTML = faqs.map((f, i) => {
+    const open = openFaq === i;
+    return `
+    <div onclick="toggleFaq(${i})" style="cursor:pointer; border-radius:22px; padding:22px 24px; background:${open ? "#F6F5FA" : "transparent"};">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:20px;">
+        <span style="font-size:16.5px; font-weight:600;">${f.q}</span>
+        <span style="width:28px; height:28px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:16px; background:${open ? "#111014" : "#F2F1F7"}; color:${open ? "#DDF24A" : "#111014"};">${open ? "–" : "+"}</span>
+      </div>
+      ${open ? `<p style="margin:12px 0 0; font-size:15px; line-height:1.55; color:#5B5866; max-width:560px;">${f.a}</p>` : ""}
+    </div>`;
+  }).join('');
+}
+window.toggleFaq = (i) => { openFaq = openFaq === i ? -1 : i; renderFaq(); };
+renderFaq();
+</script>
+</body>
+</html>
